@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="row m-1">
+        <a target="_blank" href="https://teknoseyir.com" class="badge badge-danger m-1">Teknoseyir</a>
+        <a target="_blank" href="https://tsopenteam.github.io" class="badge badge-info m-1">Ts Open Team</a>
+        <a target="_blank" href="https://github.com/tsopenteam" class="badge badge-secondary m-1">Github</a>
+    </div>
+    <div class="card-header text-center mb-1">
+        <b>teknoseyir.com site durumu</b>
+    </div>
+    <div class="row mb-3">
+        <div class="col-sm mb-1">
+            <div class="card rounded-circle p-3 ml-5 mr-5 border-0">
+                <div class="card-body">
+                    <div class="mx-auto">
+                        <ul class="list-group">
+                            <li class="list-group-item text-center border-0 h4">
+                                {{display.statusLive.date}}
+                            </li>
+                        </ul>
+                        <ul class="list-group rounded-circle">
+                            <li class="list-group-item text-center border-0">
+                                <h1>
+                                    <span class="badge"
+                                        [ngClass]="{'badge-success': display.statusLive.text==='OK', 'badge-danger': display.statusLive.text!=='OK' && display.statusLive.text!=='-'}">{{display.statusLive.text}}</span>
+                                </h1>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-sm mb-1">
+            <div class="card">
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li *ngFor="let i of display.statusList.slice(0,listSliceCount)"
+                            class="list-group-item d-flex justify-content-between align-items-center">
+                            {{i.date}}
+                            <span class="badge"
+                                [ngClass]="{'badge-success': i.text==='OK', 'badge-danger': i.text!=='OK'}">{{i.text}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="getIsSliceButton()" class="text-center">
+        <button (click)="listSliceCount=listSliceCount+20" class="btn btn-secondary">Daha Fazla</button>
+    </div>
+    <hr>
+    <div class="text-center mb-5">
+        <span>tsopenteam | 2020</span>
+    </div>
+</div>
